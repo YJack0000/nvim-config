@@ -1,3 +1,5 @@
-# Example_config
+# yjack0000's NvChad Config
 
-This can be used as an example custom config for NvChad. Do check the https://github.com/NvChad/nvcommunity
+This is my personal config for [NvChad](https://nvchad.com/). 
+
+The directory should move to `~/.config/nvim/custom/`. 
