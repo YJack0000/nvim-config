@@ -3,6 +3,28 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
     {
+        "simrat39/symbols-outline.nvim",
+        lazy = false,
+        config = function()
+            require("symbols-outline").setup {
+                keymaps = {
+                    close = { },
+                    goto_location = "g",
+                    focus_location = "<Cr>",
+                    hover_symbol = "<C-space>",
+                    toggle_preview = "K",
+                    rename_symbol = "r",
+                    code_actions = "a",
+                    fold = "c",
+                    unfold = "e",
+                    fold_all = "C",
+                    unfold_all = "E",
+                    fold_reset = "R",
+                },
+            }
+        end,
+    },
+    {
         "zbirenbaum/copilot.lua",
         event = "InsertEnter",
         opts = overrides.copilot,
