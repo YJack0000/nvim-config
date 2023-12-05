@@ -4,7 +4,7 @@ M.copilot = {
   -- Possible configurable fields can be found on:
   -- https://github.com/zbirenbaum/copilot.lua#setup-and-configuration
   suggestion = {
-      enable = false
+    enable = false,
   },
   panel = {
     enable = false,
@@ -67,7 +67,7 @@ M.mason = {
     -- docker stuff
     "docker-compose-language-service",
     "dockerfile-language-server",
-    
+
     -- vue stuff
     "vue-language-server",
     "eslint-lsp",
@@ -76,6 +76,7 @@ M.mason = {
     "pyright",
     "mypy",
     "ruff",
+    "black",
 
     -- golang stuff
     "gopls",

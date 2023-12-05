@@ -12,7 +12,7 @@ local plugins = {
     event = "VeryLazy",
     config = function()
       require "custom.configs.lint"
-    end
+    end,
   },
   {
     "olexsmir/gopher.nvim",

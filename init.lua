@@ -5,3 +5,8 @@
 --   pattern = "*",
 --   command = "tabdo wincmd =",
 -- })
+
+-- make tab into 4 spaces
+vim.cmd("set tabstop=4")
+-- make format use 4 spaces
+vim.cmd("set shiftwidth=4")
