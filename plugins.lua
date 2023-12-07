@@ -37,13 +37,13 @@ local plugins = {
         },
         lazy = false,
     },
-    {
-        "mfussenegger/nvim-lint",
-        event = "VeryLazy",
-        config = function()
-            require "custom.configs.lint"
-        end,
-    },
+    -- {
+    --     "mfussenegger/nvim-lint",
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require "custom.configs.lint"
+    --     end,
+    -- },
     {
         "olexsmir/gopher.nvim",
         ft = { "go", "gomod", "gotmpl" },
