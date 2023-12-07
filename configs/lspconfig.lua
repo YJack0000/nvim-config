@@ -26,11 +26,11 @@ lspconfig.tsserver.setup {
 lspconfig.volar.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  init_options = {
-    typescript = {
-      tsdk = "/Users/yjack/.nvm/versions/node/v18.16.0/lib/node_modules/typescript/lib",
-    },
-  },
+  -- init_options = {
+  --   typescript = {
+  --     tsdk = "/Users/yjack/.nvm/versions/node/v18.16.0/lib/node_modules/typescript/lib",
+  --   },
+  -- },
 }
 
 lspconfig.pyright.setup {
