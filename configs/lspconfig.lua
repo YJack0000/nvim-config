@@ -4,7 +4,7 @@ local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "clangd" }
+local servers = { "html", "cssls", "clangd", "tsserver", "tailwindcss", "eslint", "volar", "pyright" }
 
 capabilities.offsetEncoding = "utf-16"
 
@@ -14,36 +14,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    disableSuggestions = true,
-  },
-}
-
-lspconfig.volar.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- init_options = {
-  --   typescript = {
-  --     tsdk = "/Users/yjack/.nvm/versions/node/v18.16.0/lib/node_modules/typescript/lib",
-  --   },
-  -- },
-}
-
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  -- settings = {
-  --   python = {
-  --     analysis = {
-  --       typeCheckingMode = "off",
-  --     },
-  --   },
-  -- },
-}
 
 lspconfig.gopls.setup {
   on_attach = function(client, bufnr)

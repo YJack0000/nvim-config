@@ -3,31 +3,16 @@ local overrides = require "custom.configs.overrides"
 ---@type NvPluginSpec[]
 local plugins = {
     {
-        "simrat39/symbols-outline.nvim",
-        lazy = false,
-        config = function()
-            require("symbols-outline").setup {
-                keymaps = {
-                    close = { },
-                    goto_location = "g",
-                    focus_location = "<Cr>",
-                    hover_symbol = "<C-space>",
-                    toggle_preview = "K",
-                    rename_symbol = "r",
-                    code_actions = "a",
-                    fold = "c",
-                    unfold = "e",
-                    fold_all = "C",
-                    unfold_all = "E",
-                    fold_reset = "R",
-                },
-            }
-        end,
-    },
-    {
-        "zbirenbaum/copilot.lua",
-        event = "InsertEnter",
-        opts = overrides.copilot,
+        "hedyhli/outline.nvim",
+        -- better than symbol-outline.nvim
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = {
+            { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        },
+        opts = {
+            -- Your setup opts here
+        },
     },
     {
         "kdheepak/lazygit.nvim",
@@ -37,13 +22,6 @@ local plugins = {
         },
         lazy = false,
     },
-    -- {
-    --     "mfussenegger/nvim-lint",
-    --     event = "VeryLazy",
-    --     config = function()
-    --         require "custom.configs.lint"
-    --     end,
-    -- },
     {
         "olexsmir/gopher.nvim",
         ft = { "go", "gomod", "gotmpl" },
@@ -52,6 +30,14 @@ local plugins = {
         end,
         build = function()
             vim.cmd [[silent! GoInstallDeps]]
+        end,
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require "custom.configs.copilot"
         end,
     },
     {
@@ -75,13 +61,12 @@ local plugins = {
             },
         },
     },
-
     {
         "neovim/nvim-lspconfig",
         dependencies = {
             -- format & linting
             {
-                "jose-elias-alvarez/null-ls.nvim",
+                "nvimtools/none-ls.nvim",
                 config = function()
                     require "custom.configs.null-ls"
                 end,
