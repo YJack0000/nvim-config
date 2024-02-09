@@ -19,6 +19,8 @@ M.treesitter = {
         "gosum",
         "gowork",
         "gomod",
+
+        "graphql",
     },
     indent = {
         enable = true,
