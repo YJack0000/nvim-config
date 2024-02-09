@@ -2,17 +2,29 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
+    -- {
+    --     "hedyhli/outline.nvim",
+    --     -- better than symbol-outline.nvim
+    --     lazy = true,
+    --     cmd = { "Outline", "OutlineOpen" },
+    --     keys = {
+    --         { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+    --     },
+    --     opts = {
+    --         -- Your setup opts here
+    --     },
+    -- },
     {
-        "hedyhli/outline.nvim",
-        -- better than symbol-outline.nvim
-        lazy = true,
-        cmd = { "Outline", "OutlineOpen" },
-        keys = {
-            { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        "stevearc/aerial.nvim",
+        -- Optional dependencies
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
         },
-        opts = {
-            -- Your setup opts here
-        },
+        config = function()
+            require "custom.configs.aerial"
+        end,
+        lazy = false,
     },
     {
         "kdheepak/lazygit.nvim",

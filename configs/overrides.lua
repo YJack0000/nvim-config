@@ -81,4 +81,24 @@ M.nvimtree = {
     },
 }
 
+M.telescope = {
+    extensions_list = { "themes", "terms", "aerial" },
+    extensions = {
+        fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case",
+        },
+        aerial = {
+            -- Display symbols as <root>.<parent>.<symbol>
+            show_nesting = {
+                ["_"] = false, -- This key will be the default
+                json = true, -- You can set the option for specific filetypes
+                yaml = true,
+            },
+        },
+    },
+}
+
 return M
