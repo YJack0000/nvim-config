@@ -65,11 +65,11 @@ local plugins = {
         opts = {
             sources = {
                 { name = "nvim_lsp", group_index = 2 },
-                { name = "copilot", group_index = 2 },
-                { name = "luasnip", group_index = 2 },
-                { name = "buffer", group_index = 2 },
+                { name = "copilot",  group_index = 2 },
+                { name = "luasnip",  group_index = 2 },
+                { name = "buffer",   group_index = 2 },
                 { name = "nvim_lua", group_index = 2 },
-                { name = "path", group_index = 2 },
+                { name = "path",     group_index = 2 },
             },
         },
     },
@@ -112,6 +112,14 @@ local plugins = {
         event = "InsertEnter",
         config = function()
             require("better_escape").setup()
+        end,
+    },
+
+    {
+        "rust-lang/rust.vim",
+        ft = "rust",
+        init = function()
+            vim.g.rustfmt_autosave = 1
         end,
     },
 

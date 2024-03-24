@@ -14,13 +14,12 @@ local sources = {
     },
 
     -- cpp
-    b.formatting.clang_format.with {
-        extra_args = { "--indent-width=4", "--style=Google" },
-    },
+    b.formatting.clang_format,
 
     -- vue, react, ts/js
-    b.formatting.eslint.with { filetypes = { "vue", "typescript", "javascript" } },
-    -- b.diagnostics.eslint.with { filetypes = { "vue", "typescript", "javascript" } },
+    b.formatting.prettierd.with { filetypes = { "vue", "typescript", "javascript", "typescriptreact" } },
+    b.diagnostics.eslint.with { filetypes = { "vue", "typescript", "javascript", "typescriptreact" } },
+    -- b.formatting.prettierd.with { filetypes = { "typescriptreact" } },
 
     -- python
     -- b.diagnostics.mypy,
@@ -33,22 +32,23 @@ local sources = {
     -- go install github.com/incu6us/goimports-reviser/v3@latest
 }
 
-null_ls.setup {
-    debug = true,
-    sources = sources,
-    on_attach = function(client, bufnr)
-        if client.supports_method "textDocument/formatting" then
-            vim.api.nvim_clear_autocmds {
-                group = augroup,
-                buffer = bufnr,
-            }
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = augroup,
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format { bufnr = bufnr }
-                end,
-            })
-        end
-    end,
-}
+-- format on save
+-- null_ls.setup {
+--     debug = true,
+--     sources = sources,
+--     on_attach = function(client, bufnr)
+--         if client.supports_method "textDocument/formatting" then
+--             vim.api.nvim_clear_autocmds {
+--                 group = augroup,
+--                 buffer = bufnr,
+--             }
+--             vim.api.nvim_create_autocmd("BufWritePre", {
+--                 group = augroup,
+--                 buffer = bufnr,
+--                 callback = function()
+--                     vim.lsp.buf.format { bufnr = bufnr }
+--                 end,
+--             })
+--         end
+--     end,
+-- }

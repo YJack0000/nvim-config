@@ -63,6 +63,9 @@ M.mason = {
         -- c/cpp stuff
         "clangd",
         "clang-format",
+
+        -- rust stuff
+        "rust-analyzer",
     },
 }
 
@@ -96,7 +99,7 @@ M.telescope = {
             -- Display symbols as <root>.<parent>.<symbol>
             show_nesting = {
                 ["_"] = false, -- This key will be the default
-                json = true, -- You can set the option for specific filetypes
+                json = true,   -- You can set the option for specific filetypes
                 yaml = true,
             },
         },
