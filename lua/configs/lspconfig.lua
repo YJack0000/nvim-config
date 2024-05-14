@@ -8,7 +8,7 @@ local lspconfig = require "lspconfig"
 -- if you just want default config for the servers then put them in a table
 local servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss", "eslint", "volar", "pyright" }
 
--- capabilities.offsetEncoding = "utf-16"
+capabilities.offsetEncoding = "utf-16"
 
 for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
