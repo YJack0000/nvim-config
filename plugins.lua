@@ -2,18 +2,29 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-    -- {
-    --     "hedyhli/outline.nvim",
-    --     -- better than symbol-outline.nvim
-    --     lazy = true,
-    --     cmd = { "Outline", "OutlineOpen" },
-    --     keys = {
-    --         { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
-    --     },
-    --     opts = {
-    --         -- Your setup opts here
-    --     },
-    -- },
+    -- lazy.nvim
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            lsp = {
+                hover = {
+                    enabled = false,
+                },
+                signature = {
+                    enabled = false,
+                },
+            },
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+    },
     {
         "stevearc/aerial.nvim",
         -- Optional dependencies
@@ -33,6 +44,17 @@ local plugins = {
             "nvim-lua/plenary.nvim",
         },
         lazy = false,
+        config = function()
+            require("custom.configs.lazygit").setup()
+        end,
+    },
+    {
+        "mgierada/lazydocker.nvim",
+        dependencies = { "akinsho/toggleterm.nvim" },
+        config = function()
+            require("lazydocker").setup {}
+        end,
+        event = "BufRead", -- or any other event you might want to use.
     },
     {
         "olexsmir/gopher.nvim",
@@ -74,16 +96,18 @@ local plugins = {
         },
     },
     {
-        "neovim/nvim-lspconfig",
+        "nvimtools/none-ls.nvim",
         dependencies = {
-            -- format & linting
-            {
-                "nvimtools/none-ls.nvim",
-                config = function()
-                    require "custom.configs.null-ls"
-                end,
-            },
+            "nvimtools/none-ls-extras.nvim",
         },
+        event = "VeryLazy",
+        config = function()
+            require "custom.configs.null-ls"
+        end,
+    },
+
+    {
+        "neovim/nvim-lspconfig",
         config = function()
             require "plugins.configs.lspconfig"
             require "custom.configs.lspconfig"
