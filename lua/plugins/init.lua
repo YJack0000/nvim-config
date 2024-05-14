@@ -1,9 +1,14 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require "configs.overrides"
 
----@type NvPluginSpec[]
-local plugins = {
-    -- lazy.nvim
-    {
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre', -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+  {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
@@ -33,7 +38,7 @@ local plugins = {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require "custom.configs.aerial"
+            require "configs.aerial"
         end,
         lazy = false,
     },
@@ -45,7 +50,7 @@ local plugins = {
         },
         lazy = false,
         config = function()
-            require("custom.configs.lazygit").setup()
+            require("configs.lazygit").setup()
         end,
     },
     {
@@ -71,7 +76,7 @@ local plugins = {
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
-            require "custom.configs.copilot"
+            require "configs.copilot"
         end,
     },
     {
@@ -102,15 +107,15 @@ local plugins = {
         },
         event = "VeryLazy",
         config = function()
-            require "custom.configs.null-ls"
+            require "configs.null-ls"
         end,
     },
 
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require "plugins.configs.lspconfig"
-            require "custom.configs.lspconfig"
+            require("nvchad.configs.lspconfig").defaults()
+            require "configs.lspconfig"
         end, -- Override to setup mason-lspconfig
     },
 
@@ -161,5 +166,3 @@ local plugins = {
     --   lazy = false,
     -- }
 }
-
-return plugins
