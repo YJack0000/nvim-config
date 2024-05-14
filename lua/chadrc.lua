@@ -1,14 +1,14 @@
 ---@type ChadrcConfig
 local M = {}
 
-local highlights = require "highlights"
+local highlights = require("highlights")
 
 M.ui = {
-  theme = "onedark",
-  theme_toggle = { "onedark", "one_light" },
+	theme = "github_dark",
+	theme_toggle = { "github_dark", "github_light" },
 
-  hl_override = highlights.override,
-  hl_add = highlights.add,
+	hl_override = highlights.override,
+	hl_add = highlights.add,
 }
 
 return M
