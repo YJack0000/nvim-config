@@ -7,7 +7,7 @@ local lspconfig = require("lspconfig")
 -- if you just want default config for the servers then put them in a table
 local servers = { "html", "cssls", "tsserver", "clangd", "tailwindcss", "eslint", "volar" }
 
-capabilities.offsetEncoding = "utf-16"
+capabilities.offsetEncoding = { "utf-16", "utf-8" }
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -24,7 +24,7 @@ end
 -- 	filetypes = { "python" },
 -- })
 
-lspconfig.pylsp.setup({
+lspconfig.jedi_language_server.setup({
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
@@ -67,7 +67,7 @@ local util = require("lspconfig/util")
 lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	on_init = on_init,
-	-- capabilities = capabilities,
+	capabilities = capabilities,
 	filetypes = { "rust" },
 	root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
 	settings = {

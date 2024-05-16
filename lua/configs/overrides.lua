@@ -53,7 +53,7 @@ M.mason = {
 
         -- python stuff
         -- "pyright",
-        "python-lsp-server",
+        "jedi-language-server",
         "mypy",
         "ruff",
         "black",
