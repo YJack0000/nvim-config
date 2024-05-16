@@ -12,7 +12,7 @@ M.treesitter = {
         "c",
         "markdown",
         "markdown_inline",
-
+        "python",
         "vue",
 
         "go",
@@ -43,7 +43,7 @@ M.mason = {
         "deno",
         "prettierd",
         "tailwindcss-language-server",
-        "eslint-lsp",
+        "eslint_d",
         -- vue stuff
         "vue-language-server",
 
@@ -52,7 +52,8 @@ M.mason = {
         "dockerfile-language-server",
 
         -- python stuff
-        "pyright",
+        -- "pyright",
+        "python-lsp-server",
         "mypy",
         "ruff",
         "black",
