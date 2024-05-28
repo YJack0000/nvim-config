@@ -17,6 +17,11 @@ local opts = {
 
 		-- cpp
 		b.formatting.clang_format,
+        -- cmake
+        b.diagnostics.cmake_lint,
+        b.formatting.cmake_format,
+        -- asm
+        b.formatting.asmfmt,
 
 		-- vue, react, ts/js
 		require("none-ls.formatting.eslint_d").with({

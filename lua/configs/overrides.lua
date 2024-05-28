@@ -1,110 +1,123 @@
 local M = {}
 
 M.treesitter = {
-    ensure_installed = {
-        "vim",
-        "lua",
-        "html",
-        "css",
-        "javascript",
-        "typescript",
-        "tsx",
-        "c",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "vue",
+	ensure_installed = {
+		"vim",
+		"lua",
 
-        "go",
-        "gosum",
-        "gowork",
-        "gomod",
+		"html",
+		"css",
+		"javascript",
+		"typescript",
+		"tsx",
 
-        "graphql",
-    },
-    indent = {
-        enable = true,
-        -- disable = {
-        --   "python"
-        -- },
-    },
+		"json",
+
+		"c",
+		"cpp",
+
+		"asm",
+
+		"markdown",
+		"markdown_inline",
+		"python",
+		"vue",
+
+		"go",
+		"gosum",
+		"gowork",
+		"gomod",
+
+		"graphql",
+	},
+	indent = {
+		enable = true,
+		-- disable = {
+		--   "python"
+		-- },
+	},
 }
 
 M.mason = {
-    ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-        "stylua",
+	ensure_installed = {
+		-- lua stuff
+		"lua-language-server",
+		"stylua",
 
-        -- web dev stuff
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-        "deno",
-        "prettierd",
-        "tailwindcss-language-server",
-        "eslint_d",
-        -- vue stuff
-        "vue-language-server",
+		-- web dev stuff
+		"css-lsp",
+		"html-lsp",
+		"typescript-language-server",
+		"deno",
+		"prettierd",
+		"tailwindcss-language-server",
+		"eslint-lsp",
 
-        -- docker stuff
-        "docker-compose-language-service",
-        "dockerfile-language-server",
+		-- vue stuff
+		"vue-language-server",
 
-        -- python stuff
-        -- "pyright",
-        "jedi-language-server",
-        "mypy",
-        "ruff",
-        "black",
+		-- docker stuff
+		"docker-compose-language-service",
+		"dockerfile-language-server",
 
-        -- golang stuff
-        "gopls",
+		-- python stuff
+		-- "pyright",
+		"jedi-language-server",
+		"mypy",
+		"ruff",
+		"black",
 
-        -- c/cpp stuff
-        "clangd",
-        "clang-format",
+		-- golang stuff
+		"gopls",
 
-        -- rust stuff
-        "rust-analyzer",
-    },
+		-- c/cpp stuff
+		"clangd",
+		"clang-format",
+		"cmakelint",
+		-- "cmale_format",
+		-- assembly stuff
+		"asmfmt",
+
+		-- rust stuff
+		"rust-analyzer",
+	},
 }
 
 -- git support in nvimtree
 M.nvimtree = {
-    git = {
-        enable = true,
-        ignore = false,
-    },
+	git = {
+		enable = true,
+		ignore = false,
+	},
 
-    renderer = {
-        highlight_git = true,
-        icons = {
-            show = {
-                git = true,
-            },
-        },
-    },
+	renderer = {
+		highlight_git = true,
+		icons = {
+			show = {
+				git = true,
+			},
+		},
+	},
 }
 
 M.telescope = {
-    extensions_list = { "themes", "terms", "aerial" },
-    extensions = {
-        fzf = {
-            fuzzy = true,
-            override_generic_sorter = true,
-            override_file_sorter = true,
-            case_mode = "smart_case",
-        },
-        aerial = {
-            -- Display symbols as <root>.<parent>.<symbol>
-            show_nesting = {
-                ["_"] = false, -- This key will be the default
-                json = true,   -- You can set the option for specific filetypes
-                yaml = true,
-            },
-        },
-    },
+	extensions_list = { "themes", "terms", "aerial" },
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		},
+		aerial = {
+			-- Display symbols as <root>.<parent>.<symbol>
+			show_nesting = {
+				["_"] = false, -- This key will be the default
+				json = true, -- You can set the option for specific filetypes
+				yaml = true,
+			},
+		},
+	},
 }
 
 return M
