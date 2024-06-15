@@ -1,12 +1,19 @@
 local overrides = require("configs.overrides")
 
 return {
+	-- {
+	-- 	"stevearc/conform.nvim",
+	-- 	-- event = 'BufWritePre', -- uncomment for format on save
+	-- 	config = function()
+	-- 		require("configs.conform")
+	-- 	end,
+	-- },
 	{
-		"stevearc/conform.nvim",
-		-- event = 'BufWritePre', -- uncomment for format on save
-		config = function()
-			require("configs.conform")
-		end,
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+		},
 	},
 	{
 		"jackMort/ChatGPT.nvim",
