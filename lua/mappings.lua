@@ -18,6 +18,9 @@ map("n", "<leader>wv", ":vsplit<CR>", { desc = "Vertical Split" })
 map("n", "<leader>wh", ":split<CR>", { desc = "Horizontal Split" })
 map("n", "<leader>wx", ":close<CR>", { desc = "Close Window" })
 
+-- Buffer management
+map("n", "<leader>bd", ":bufdo bd<CR>", { desc = "Close all buffers" })
+
 -- Visual mode
 map("v", ">", ">gv", { desc = "Indent" })
 
