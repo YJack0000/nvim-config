@@ -2,14 +2,11 @@ local null_ls = require("null-ls")
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local b = null_ls.builtins
+local python_path = vim.fn.trim(vim.fn.system("where python"))
 
 local opts = {
 	debug = true,
 	sources = {
-		-- webdev stuff
-		-- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
-		b.formatting.prettierd.with({ filetypes = { "html", "markdown", "css", "json" } }), -- so prettier works only on these filetypes
-
 		-- Lua
 		b.formatting.stylua.with({
 			extra_args = { "--indent-type", "Spaces", "--indent-width", "4" },
@@ -17,12 +14,14 @@ local opts = {
 
 		-- cpp
 		b.formatting.clang_format,
-        -- cmake
-        b.diagnostics.cmake_lint,
-        b.formatting.cmake_format,
-        -- asm
-        b.formatting.asmfmt,
+		-- cmake
+		b.diagnostics.cmake_lint,
+		b.formatting.cmake_format,
+		-- asm
+		b.formatting.asmfmt,
 
+		-- webdev stuff
+		b.formatting.prettierd.with({ filetypes = { "html", "markdown", "css", "json" } }), -- so prettier works only on these filetypes
 		-- vue, react, ts/js
 		require("none-ls.formatting.eslint_d").with({
 			filetypes = { "vue", "typescript", "javascript", "typescriptreact" },
@@ -35,9 +34,12 @@ local opts = {
 
 		-- python
 		require("none-ls.diagnostics.ruff"),
-        require("none-ls.formatting.ruff"),
-        b.formatting.isort,
-		b.formatting.black,
+		require("none-ls.formatting.ruff").with({
+			extra_args = { "--select", "F,E,W,I,S,B,C,N", "--ignore", "E501" },
+		}),
+		b.diagnostics.mypy.with({
+			extra_args = { "--python-executable", python_path },
+		}),
 
 		-- golang
 		b.formatting.gofmt,

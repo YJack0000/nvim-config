@@ -51,7 +51,7 @@ M.mason = {
 		"deno",
 		"prettierd",
 		"tailwindcss-language-server",
-		"eslint-lsp",
+		"eslint",
 
 		-- vue stuff
 		"vue-language-server",
@@ -65,7 +65,6 @@ M.mason = {
 		"jedi-language-server",
 		"mypy",
 		"ruff",
-		"black",
 
 		-- golang stuff
 		"gopls",
