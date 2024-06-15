@@ -27,13 +27,6 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
--- lspconfig.pyright.setup({
--- 	on_attach = on_attach,
--- 	on_init = on_init,
--- 	capabilities = capabilities,
--- 	filetypes = { "python" },
--- })
-
 lspconfig.jedi_language_server.setup({
 	on_attach = on_attach,
 	on_init = on_init,
