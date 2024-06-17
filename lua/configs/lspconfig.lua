@@ -3,6 +3,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require("lspconfig")
+local util = require("lspconfig/util")
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
@@ -26,6 +27,42 @@ for _, lsp in ipairs(servers) do
 		capabilities = capabilities,
 	})
 end
+
+-- lspconfig.pyright.setup({
+-- 	on_attach = on_attach,
+-- 	on_init = on_init,
+-- 	capabilities = capabilities,
+--   root_dir = function(fname)
+--     return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+--       util.path.dirname(fname)
+--   end,
+-- 	single_file_support = true,
+-- 	settings = {
+-- 		pyright = {
+-- 			disableLanguageServices = false,
+-- 			disableOrganizeImports = false,
+-- 		},
+-- 		python = {
+-- 			analysis = {
+-- 				autoSearchPaths = true,
+-- 				typeCheckingMode = "standard",
+-- 				useLibraryCodeForTypes = true,
+-- 			},
+-- 		},
+-- 	},
+-- })
+
+-- lspconfig.pylsp.setup({
+--     on_attach = on_attach,
+--     on_init = on_init,
+--     capabilities = capabilities,
+-- })
+
+-- lspconfig.pylyzer.setup({
+--     on_attach = on_attach,
+--     on_init = on_init,
+--     capabilities = capabilities,
+-- })
 
 lspconfig.jedi_language_server.setup({
 	on_attach = on_attach,

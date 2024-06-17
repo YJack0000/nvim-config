@@ -17,8 +17,6 @@ local opts = {
 		-- cmake
 		b.diagnostics.cmake_lint,
 		b.formatting.cmake_format,
-		-- asm
-		b.formatting.asmfmt,
 
 		-- webdev stuff
 		b.formatting.prettierd.with({ filetypes = { "html", "markdown", "css", "json" } }), -- so prettier works only on these filetypes
@@ -33,12 +31,13 @@ local opts = {
 		-- b.formatting.prettierd.with { filetypes = { "typescriptreact" } },
 
 		-- python
+		-- b.diagnostics.mypy.with({
+		-- 	extra_args = { "--python-executable", python_path },
+		-- }),
+        -- b.diagnostics.pylint,
 		require("none-ls.diagnostics.ruff"),
 		require("none-ls.formatting.ruff").with({
 			extra_args = { "--select", "F,E,W,I,S,B,C,N", "--ignore", "E501" },
-		}),
-		b.diagnostics.mypy.with({
-			extra_args = { "--python-executable", python_path },
 		}),
 
 		-- golang

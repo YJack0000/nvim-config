@@ -24,3 +24,6 @@ map("n", "<leader>bd", ":bufdo bd<CR>", { desc = "Close all buffers" })
 -- Visual mode
 map("v", ">", ">gv", { desc = "Indent" })
 
+-- debugger
+map("n", "<leader>db", ":lua require('dap').toggle_breakpoint()<CR>", { desc = "Toggle breakpoint" })
+map("n", "<leader>dc", ":lua require('dap').continue()<CR>", { desc = "Continue" })

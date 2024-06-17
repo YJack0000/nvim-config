@@ -8,11 +8,29 @@ return {
 	-- 		require("configs.conform")
 	-- 	end,
 	-- },
+	--
+	{
+		"rmagatti/auto-session",
+        event = "VimEnter",
+		config = function()
+			require("auto-session").setup({
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+                pre_save_cmds = { "NvimTreeClose" },
+			})
+		end,
+	},
 	{
 		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
+		},
+		opts = {
+			ensure_installed = {
+				"codelldb",
+			},
 		},
 	},
 	{

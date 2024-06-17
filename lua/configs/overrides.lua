@@ -51,7 +51,7 @@ M.mason = {
 		"deno",
 		"prettierd",
 		"tailwindcss-language-server",
-		"eslint",
+		"eslint-lsp",
 
 		-- vue stuff
 		"vue-language-server",
