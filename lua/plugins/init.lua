@@ -11,12 +11,12 @@ return {
 	--
 	{
 		"rmagatti/auto-session",
-        event = "VimEnter",
+		event = "VimEnter",
 		config = function()
 			require("auto-session").setup({
 				log_level = "error",
 				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-                pre_save_cmds = { "NvimTreeClose" },
+				pre_save_cmds = { "NvimTreeClose" },
 			})
 		end,
 	},
@@ -31,19 +31,6 @@ return {
 			ensure_installed = {
 				"codelldb",
 			},
-		},
-	},
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("configs.chatgpt")
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"folke/trouble.nvim",
-			"nvim-telescope/telescope.nvim",
 		},
 	},
 	{
@@ -110,12 +97,9 @@ return {
 		end,
 	},
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("configs.copilot")
-		end,
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
 	},
 	{
 		"hrsh7th/nvim-cmp",

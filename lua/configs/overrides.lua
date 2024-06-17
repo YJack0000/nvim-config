@@ -51,7 +51,7 @@ M.mason = {
 		"deno",
 		"prettierd",
 		"tailwindcss-language-server",
-		"eslint-lsp",
+		"eslint",
 
 		-- vue stuff
 		"vue-language-server",
@@ -95,6 +95,12 @@ M.nvimtree = {
 			show = {
 				git = true,
 			},
+		},
+	},
+
+	actions = {
+		open_file = {
+			quit_on_open = true,
 		},
 	},
 }
