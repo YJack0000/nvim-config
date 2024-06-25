@@ -59,6 +59,7 @@ M.mason = {
 		-- docker stuff
 		"docker-compose-language-service",
 		"dockerfile-language-server",
+        "hadolint",
 
 		-- python stuff
 		-- "pyright",

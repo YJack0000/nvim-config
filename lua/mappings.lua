@@ -17,8 +17,8 @@ map("n", "}", "<cmd>AerialNext<CR>", { desc = "Aerial Next" })
 map("n", "<leader>fo", "<cmd>Telescope aerial<CR>", { desc = "Find Symbol" })
 
 -- window management
-map("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
-map("n", "<leader>wh", "<cmd>split<CR>", { desc = "Horizontal Split" })
+map("n", "<leader>v", "<cmd>vsplit<CR>", { desc = "Vertical Split" })
+map("n", "<leader>h", "<cmd>split<CR>", { desc = "Horizontal Split" })
 map("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close Window" })
 
 -- Buffer management
@@ -46,4 +46,4 @@ map("n", "<leader>q", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnosti
 -- map("n", "<leader>tQ", "<cmd>Trouble qflist toggle<cr>", { desc = "Quickfix List (Trouble)" })
 
 -- Noice
-map("n", "<leader>tn", "<cmd>Telescope notify<CR>", { desc = "Telescope (Notify)" })
+map("n", "<leader>fn", "<cmd>Telescope notify<CR>", { desc = "Telescope (Notify)" })

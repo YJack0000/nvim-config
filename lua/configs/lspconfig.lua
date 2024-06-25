@@ -9,7 +9,6 @@ local util = require("lspconfig/util")
 local servers = {
 	"html",
 	"cssls",
-	"tsserver",
 	"clangd",
 	"tailwindcss",
 	"eslint",
@@ -28,47 +27,24 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
--- lspconfig.pyright.setup({
--- 	on_attach = on_attach,
--- 	on_init = on_init,
--- 	capabilities = capabilities,
---   root_dir = function(fname)
---     return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
---       util.path.dirname(fname)
---   end,
--- 	single_file_support = true,
--- 	settings = {
--- 		pyright = {
--- 			disableLanguageServices = false,
--- 			disableOrganizeImports = false,
--- 		},
--- 		python = {
--- 			analysis = {
--- 				autoSearchPaths = true,
--- 				typeCheckingMode = "standard",
--- 				useLibraryCodeForTypes = true,
--- 			},
--- 		},
--- 	},
--- })
+lspconfig.tsserver.setup({
+	on_attach = on_attach,
+	on_init = on_init,
+	capabilities = capabilities,
+	root_dir = util.root_pattern("tsconfig.json", "jsconfig.json"),
+})
 
--- lspconfig.pylsp.setup({
---     on_attach = on_attach,
---     on_init = on_init,
---     capabilities = capabilities,
--- })
-
--- lspconfig.pylyzer.setup({
---     on_attach = on_attach,
---     on_init = on_init,
---     capabilities = capabilities,
--- })
-
-lspconfig.jedi_language_server.setup({
+lspconfig.pyright.setup({
 	on_attach = on_attach,
 	on_init = on_init,
 	capabilities = capabilities,
 })
+
+-- lspconfig.jedi_language_server.setup({
+-- 	on_attach = on_attach,
+-- 	on_init = on_init,
+-- 	capabilities = capabilities,
+-- })
 
 local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
 lspconfig.gopls.setup({
@@ -103,7 +79,6 @@ lspconfig.gopls.setup({
 	},
 })
 
-local util = require("lspconfig/util")
 lspconfig.rust_analyzer.setup({
 	on_attach = on_attach,
 	on_init = on_init,
