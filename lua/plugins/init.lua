@@ -45,6 +45,18 @@ return {
 					enabled = false,
 				},
 			},
+			notify = {
+				enabled = true,
+				view = "mini",
+			},
+			messages = {
+				view = "mini", -- 使用 mini 视图在底部显示消息
+				view_error = "mini", -- 错误信息使用 mini 视图
+				view_warn = "mini", -- 警告信息使用 mini 视图
+				view_info = "mini", -- 信息使用 mini 视图
+				view_debug = "mini", -- 调试信息使用 mini 视图
+				view_trace = "mini", -- 跟踪信息使用 mini 视图
+			},
 		},
 		dependencies = {
 			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
