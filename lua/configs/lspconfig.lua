@@ -28,7 +28,13 @@ for _, lsp in ipairs(servers) do
 end
 
 lspconfig.tsserver.setup({
-	on_attach = on_attach,
+	on_attach = function(client, _)
+		-- prevent formatting with tsserver conflicts with eslint_d
+		if client.name == "tsserver" then
+			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+		end
+		-- rest of the initialization
+	end,
 	on_init = on_init,
 	capabilities = capabilities,
 	root_dir = util.root_pattern("tsconfig.json", "jsconfig.json"),
