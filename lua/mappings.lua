@@ -47,3 +47,26 @@ map("n", "<leader>q", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnosti
 
 -- Noice
 map("n", "<leader>fn", "<cmd>Telescope notify<CR>", { desc = "Telescope (Notify)" })
+
+-- NvimTree
+-- Check if nvim-tree is focused
+local function is_nvim_tree_focused()
+    -- Get the name of the current buffer
+    local bufname = vim.api.nvim_buf_get_name(0)
+    -- Check if the buffer name matches "NvimTree_" which indicates that nvim-tree is focused
+    return bufname:match("NvimTree_") ~= nil
+end
+
+-- Toggle or focus nvim-tree window
+local function toggle_or_focus_nvim_tree()
+    -- If nvim-tree is focused, then close it
+    if is_nvim_tree_focused() then
+        require'nvim-tree.api'.tree.toggle({ find_file = true })
+    else
+        -- Otherwise, open or focus it
+        require'nvim-tree.api'.tree.open()
+    end
+end
+
+-- 重新設置 <leader> + e 快捷鍵
+map("n", "<leader>e", toggle_or_focus_nvim_tree, { noremap = true, silent = true })
