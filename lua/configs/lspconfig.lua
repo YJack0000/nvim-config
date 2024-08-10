@@ -11,7 +11,7 @@ local servers = {
 	"cssls",
 	"clangd",
 	"tailwindcss",
-	"eslint",
+	-- "eslint",
 	"volar",
 	"dockerls",
 	"docker_compose_language_service",
@@ -37,14 +37,20 @@ lspconfig.tsserver.setup({
 	end,
 	on_init = on_init,
 	capabilities = capabilities,
-	root_dir = util.root_pattern("tsconfig.json", "jsconfig.json"),
 })
 
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	on_init = on_init,
-	capabilities = capabilities,
-})
+-- lspconfig.pyright.setup({
+-- 	on_attach = on_attach,
+-- 	on_init = on_init,
+-- 	capabilities = capabilities,
+-- })
+
+-- lspconfig.basedpyright.setup({
+-- 	on_attach = on_attach,
+-- 	on_init = on_init,
+-- 	capabilities = capabilities,
+-- })
+
 
 -- lspconfig.jedi_language_server.setup({
 -- 	on_attach = on_attach,
