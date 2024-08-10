@@ -25,47 +25,47 @@ map("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close Window" })
 map("n", "<leader>bd", "<cmd>bufdo bd<CR>", { desc = "Close all buffers" })
 
 -- Reopen last closed buffer
-local last_closed_buffers = {}
-local max_buffers = 10
-
-local function save_last_closed_buffer(event)
-	local bufnr = event.buf
-	if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted then
-		local buf_path = vim.api.nvim_buf_get_name(bufnr)
-		-- 添加到 FILO 结构中
-		table.insert(last_closed_buffers, buf_path)
-		-- 如果记录超过 max_buffers，则删除最旧的记录
-		if #last_closed_buffers > max_buffers then
-			table.remove(last_closed_buffers, 1)
-		end
-		-- Debug Message
-		-- print("Saved last closed buffer path:", buf_path)
-		-- print("Current buffer history:", vim.inspect(last_closed_buffers))
-	else
-		vim.notify("Buffer is not valid or not listed", vim.log.levels.WARN)
-	end
-end
-
-local function reopen_last_closed_buffer()
-	if #last_closed_buffers > 0 then
-		local buf_path = table.remove(last_closed_buffers)
-		if vim.fn.filereadable(buf_path) == 1 then
-			-- Reopen the buffer from the saved path
-			vim.cmd("e " .. buf_path)
-			vim.notify("Reopened buffer from path: " .. buf_path, vim.log.levels.INFO)
-		else
-			vim.notify("Buffer file does not exist: " .. buf_path, vim.log.levels.ERROR)
-		end
-	else
-		vim.notify("No buffers to reopen", vim.log.levels.WARN)
-	end
-end
-
-vim.api.nvim_create_autocmd("BufDelete", {
-	callback = save_last_closed_buffer,
-})
-
-map("n", "<leader>bu", reopen_last_closed_buffer, { desc = "Reopen last closed buffer" })
+-- local last_closed_buffers = {}
+-- local max_buffers = 10
+--
+-- local function save_last_closed_buffer(event)
+-- 	local bufnr = event.buf
+-- 	if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted then
+-- 		local buf_path = vim.api.nvim_buf_get_name(bufnr)
+-- 		-- 添加到 FILO 结构中
+-- 		table.insert(last_closed_buffers, buf_path)
+-- 		-- 如果记录超过 max_buffers，则删除最旧的记录
+-- 		if #last_closed_buffers > max_buffers then
+-- 			table.remove(last_closed_buffers, 1)
+-- 		end
+-- 		-- Debug Message
+-- 		-- print("Saved last closed buffer path:", buf_path)
+-- 		-- print("Current buffer history:", vim.inspect(last_closed_buffers))
+-- 	else
+-- 		vim.notify("Buffer is not valid or not listed", vim.log.levels.WARN)
+-- 	end
+-- end
+--
+-- local function reopen_last_closed_buffer()
+-- 	if #last_closed_buffers > 0 then
+-- 		local buf_path = table.remove(last_closed_buffers)
+-- 		if vim.fn.filereadable(buf_path) == 1 then
+-- 			-- Reopen the buffer from the saved path
+-- 			vim.cmd("e " .. buf_path)
+-- 			vim.notify("Reopened buffer from path: " .. buf_path, vim.log.levels.INFO)
+-- 		else
+-- 			vim.notify("Buffer file does not exist: " .. buf_path, vim.log.levels.ERROR)
+-- 		end
+-- 	else
+-- 		vim.notify("No buffers to reopen", vim.log.levels.WARN)
+-- 	end
+-- end
+--
+-- vim.api.nvim_create_autocmd("BufDelete", {
+-- 	callback = save_last_closed_buffer,
+-- })
+--
+-- map("n", "<leader>bu", reopen_last_closed_buffer, { desc = "Reopen last closed buffer" })
 
 -- Visual mode
 map("v", ">", ">gv", { desc = "Indent" })
@@ -79,7 +79,7 @@ map("n", "<leader>dc", ":lua require('dap').continue()<CR>", { desc = "Continue"
 map("n", "<leader>q", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnostics (Trouble)" })
 
 -- Noice
-map("n", "<leader>fn", "<cmd>Telescope notify<CR>", { desc = "Telescope (Notify)" })
+map("n", "<leader>fn", "<cmd>Noice telescope<CR>", { desc = "Telescope (Notify)" })
 
 -- NvimTree
 -- Check if nvim-tree is focused
