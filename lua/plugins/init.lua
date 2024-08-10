@@ -10,6 +10,21 @@ return {
 	-- },
 	--
 	{
+		"numToStr/Comment.nvim",
+		config = function()
+			local prehook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
+			require("Comment").setup({
+				pre_hook = prehook,
+			})
+		end,
+		event = "BufReadPre",
+		lazy = false,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
+	{
 		"rmagatti/auto-session",
 		event = "VimEnter",
 		config = function()
