@@ -27,10 +27,10 @@ for _, lsp in ipairs(servers) do
 	})
 end
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	on_attach = function(client, _)
-		-- prevent formatting with tsserver conflicts with eslint_d
-		if client.name == "tsserver" then
+		-- prevent formatting with ts_ls conflicts with eslint_d
+		if client.name == "ts_ls" then
 			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
 		end
 		-- rest of the initialization
@@ -39,11 +39,11 @@ lspconfig.tsserver.setup({
 	capabilities = capabilities,
 })
 
--- lspconfig.pyright.setup({
--- 	on_attach = on_attach,
--- 	on_init = on_init,
--- 	capabilities = capabilities,
--- })
+lspconfig.pyright.setup({
+	on_attach = on_attach,
+	on_init = on_init,
+	capabilities = capabilities,
+})
 
 -- lspconfig.basedpyright.setup({
 -- 	on_attach = on_attach,
@@ -51,12 +51,6 @@ lspconfig.tsserver.setup({
 -- 	capabilities = capabilities,
 -- })
 
-
--- lspconfig.jedi_language_server.setup({
--- 	on_attach = on_attach,
--- 	on_init = on_init,
--- 	capabilities = capabilities,
--- })
 
 local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
 lspconfig.gopls.setup({

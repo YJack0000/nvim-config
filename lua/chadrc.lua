@@ -18,8 +18,8 @@ M.ui = {
 }
 
 M.base46 = {
-	theme = "onedark",
-	theme_toggle = { "onedark", "one_light" },
+	theme = "github_dark",
+	theme_toggle = { "github_dark", "one_light" },
 	hl_override = highlights.override,
 	hl_add = highlights.add,
 }

@@ -219,6 +219,35 @@ return {
 		end,
 	},
 
+	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		lazy = false,
+		config = function()
+			require("claude-code").setup({
+				window = {
+					position = "float",
+					float = {
+						width = "90%",
+						height = "90%",
+						row = "center",
+						col = "center",
+						relative = "editor",
+						border = "rounded",
+					},
+				},
+				keymaps = {
+					toggle = {
+						normal = "<C-o>",
+						terminal = "<C-o>",
+					},
+				},
+			})
+		end,
+	},
+
 	-- To make a plugin not be loaded
 	-- {
 	--   "NvChad/nvim-colorizer.lua",

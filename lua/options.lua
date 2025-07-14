@@ -17,6 +17,7 @@ if vim.fn.executable("/usr/bin/zsh") == 1 then
 	vim.o.shell = "/usr/bin/zsh"
 end
 
+
 -- local enable_providers = {
 -- 	"python3_provider",
 -- }

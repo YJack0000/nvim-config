@@ -62,8 +62,7 @@ M.mason = {
         "hadolint",
 
 		-- python stuff
-		-- "pyright",
-		"jedi-language-server",
+		"pyright",
 		"mypy",
 		"ruff",
 
@@ -89,6 +88,10 @@ M.nvimtree = {
 		enable = true,
 		ignore = false,
 	},
+
+    filters = {
+        dotfiles = false,
+    },
 
 	renderer = {
 		highlight_git = true,
