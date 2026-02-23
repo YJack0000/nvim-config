@@ -15,6 +15,7 @@ local servers = {
 	"volar",
 	"dockerls",
 	"docker_compose_language_service",
+	"prismals",
 }
 
 capabilities.offsetEncoding = { "utf-16", "utf-8" }

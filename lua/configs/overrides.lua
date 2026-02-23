@@ -29,6 +29,12 @@ M.treesitter = {
 		"gomod",
 
 		"graphql",
+
+		"prisma",
+		"yaml",
+		"toml",
+		"dockerfile",
+		"bash",
 	},
 	indent = {
 		enable = true,
@@ -79,6 +85,9 @@ M.mason = {
 
 		-- rust stuff
 		"rust-analyzer",
+
+		-- prisma
+		"prisma-language-server",
 	},
 }
 
