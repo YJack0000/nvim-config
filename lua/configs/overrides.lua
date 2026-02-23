@@ -38,9 +38,6 @@ M.treesitter = {
 	},
 	indent = {
 		enable = true,
-		-- disable = {
-		--   "python"
-		-- },
 	},
 }
 
@@ -65,7 +62,7 @@ M.mason = {
 		-- docker stuff
 		"docker-compose-language-service",
 		"dockerfile-language-server",
-        "hadolint",
+		"hadolint",
 
 		-- python stuff
 		"pyright",
@@ -79,7 +76,7 @@ M.mason = {
 		"clangd",
 		"clang-format",
 		"cmakelint",
-		-- "cmale_format",
+
 		-- assembly stuff
 		"asmfmt",
 
@@ -98,9 +95,9 @@ M.nvimtree = {
 		ignore = false,
 	},
 
-    filters = {
-        dotfiles = false,
-    },
+	filters = {
+		dotfiles = false,
+	},
 
 	renderer = {
 		highlight_git = true,
@@ -130,8 +127,8 @@ M.telescope = {
 		aerial = {
 			-- Display symbols as <root>.<parent>.<symbol>
 			show_nesting = {
-				["_"] = false, -- This key will be the default
-				json = true, -- You can set the option for specific filetypes
+				["_"] = false,
+				json = true,
 				yaml = true,
 			},
 		},

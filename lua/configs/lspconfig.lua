@@ -11,7 +11,6 @@ local servers = {
 	"cssls",
 	"clangd",
 	"tailwindcss",
-	-- "eslint",
 	"volar",
 	"dockerls",
 	"docker_compose_language_service",
@@ -32,9 +31,8 @@ lspconfig.ts_ls.setup({
 	on_attach = function(client, _)
 		-- prevent formatting with ts_ls conflicts with eslint_d
 		if client.name == "ts_ls" then
-			client.server_capabilities.documentFormattingProvider = false -- 0.8 and later
+			client.server_capabilities.documentFormattingProvider = false
 		end
-		-- rest of the initialization
 	end,
 	on_init = on_init,
 	capabilities = capabilities,
@@ -46,13 +44,6 @@ lspconfig.pyright.setup({
 	capabilities = capabilities,
 })
 
--- lspconfig.basedpyright.setup({
--- 	on_attach = on_attach,
--- 	on_init = on_init,
--- 	capabilities = capabilities,
--- })
-
-
 local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
 lspconfig.gopls.setup({
 	on_attach = function(client, bufnr)
@@ -61,7 +52,7 @@ lspconfig.gopls.setup({
 				group = auto_group,
 				buffer = bufnr,
 			})
-			vim.api.nvim_create_augroup("BufWritePre", {
+			vim.api.nvim_create_autocmd("BufWritePre", {
 				group = auto_group,
 				buffer = bufnr,
 				callback = function()
