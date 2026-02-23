@@ -80,6 +80,7 @@ map("n", "<leader>q", "<cmd>Trouble diagnostics toggle<cr>", { desc = "Diagnosti
 
 -- Noice
 map("n", "<leader>fn", "<cmd>Noice telescope<CR>", { desc = "Telescope (Notify)" })
+map("n", "<leader>fN", "<cmd>messages<CR>", { desc = "Native messages (includes startup)" })
 
 -- NvimTree
 -- Check if nvim-tree is focused
