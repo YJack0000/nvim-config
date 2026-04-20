@@ -152,13 +152,17 @@ return {
 		},
 	},
 	{
-		"nvimtools/none-ls.nvim",
-		dependencies = {
-			"nvimtools/none-ls-extras.nvim",
-		},
-		event = "VeryLazy",
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = require("configs.conform").opts,
+	},
+
+	{
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("configs.null-ls")
+			require("configs.lint")
 		end,
 	},
 

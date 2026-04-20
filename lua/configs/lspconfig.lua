@@ -58,23 +58,8 @@ vim.lsp.config("ts_ls", {
 })
 vim.lsp.enable("ts_ls")
 
-local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
 vim.lsp.config("gopls", {
-	on_attach = function(client, bufnr)
-		if client:supports_method("textDocument/codeAction") then
-			vim.api.nvim_clear_autocmds({
-				group = auto_group,
-				buffer = bufnr,
-			})
-			vim.api.nvim_create_autocmd("BufWritePre", {
-				group = auto_group,
-				buffer = bufnr,
-				callback = function()
-					vim.lsp.buf.format({ bufnr = bufnr })
-				end,
-			})
-		end
-	end,
+	on_attach = on_attach,
 	on_init = on_init,
 	capabilities = capabilities,
 	cmd = { "gopls" },
