@@ -21,7 +21,6 @@ M.treesitter = {
 		"markdown",
 		"markdown_inline",
 		"python",
-		"vue",
 
 		"go",
 		"gosum",
@@ -55,9 +54,6 @@ M.mason = {
 		"prettierd",
 		"tailwindcss-language-server",
 		"eslint",
-
-		-- vue stuff
-		"vue-language-server",
 
 		-- docker stuff
 		"docker-compose-language-service",

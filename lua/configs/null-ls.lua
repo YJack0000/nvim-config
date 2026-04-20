@@ -17,12 +17,12 @@ local opts = {
 
 		-- webdev stuff
 		b.formatting.prettierd.with({ filetypes = { "html", "markdown", "css", "json" } }), -- so prettier works only on these filetypes
-		-- vue, react, ts/js
+		-- react, ts/js
 		require("none-ls.formatting.eslint_d").with({
-			filetypes = { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact" },
+			filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
 		}),
 		require("none-ls.diagnostics.eslint_d").with({
-			filetypes = { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact" },
+			filetypes = { "typescript", "javascript", "typescriptreact", "javascriptreact" },
 		}),
 
 		-- python

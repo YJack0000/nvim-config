@@ -9,7 +9,6 @@ local servers = {
 	"cssls",
 	"clangd",
 	"tailwindcss",
-	"vue_ls",
 	"dockerls",
 	"docker_compose_language_service",
 	"prismals",
