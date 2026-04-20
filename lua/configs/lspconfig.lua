@@ -2,10 +2,8 @@ local on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
-local lspconfig = require("lspconfig")
-local util = require("lspconfig/util")
+capabilities.offsetEncoding = { "utf-16", "utf-8" }
 
--- if you just want default config for the servers then put them in a table
 local servers = {
 	"html",
 	"cssls",
@@ -15,21 +13,20 @@ local servers = {
 	"dockerls",
 	"docker_compose_language_service",
 	"prismals",
+	"pyright",
 }
 
-capabilities.offsetEncoding = { "utf-16", "utf-8" }
-
 for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
+	vim.lsp.config(lsp, {
 		on_attach = on_attach,
 		on_init = on_init,
 		capabilities = capabilities,
 	})
+	vim.lsp.enable(lsp)
 end
 
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
 	on_attach = function(client, _)
-		-- prevent formatting with ts_ls conflicts with eslint_d
 		if client.name == "ts_ls" then
 			client.server_capabilities.documentFormattingProvider = false
 		end
@@ -37,17 +34,12 @@ lspconfig.ts_ls.setup({
 	on_init = on_init,
 	capabilities = capabilities,
 })
-
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	on_init = on_init,
-	capabilities = capabilities,
-})
+vim.lsp.enable("ts_ls")
 
 local auto_group = vim.api.nvim_create_augroup("LspFormatting", {})
-lspconfig.gopls.setup({
+vim.lsp.config("gopls", {
 	on_attach = function(client, bufnr)
-		if client.supports_method("textDocument/codeAction") then
+		if client:supports_method("textDocument/codeAction") then
 			vim.api.nvim_clear_autocmds({
 				group = auto_group,
 				buffer = bufnr,
@@ -65,7 +57,7 @@ lspconfig.gopls.setup({
 	capabilities = capabilities,
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
+	root_markers = { "go.mod", ".git" },
 	settings = {
 		gopls = {
 			completeUnimported = true,
@@ -76,13 +68,14 @@ lspconfig.gopls.setup({
 		},
 	},
 })
+vim.lsp.enable("gopls")
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("rust_analyzer", {
 	on_attach = on_attach,
 	on_init = on_init,
 	capabilities = capabilities,
 	filetypes = { "rust" },
-	root_dir = util.root_pattern("Cargo.toml", "rust-project.json"),
+	root_markers = { "Cargo.toml", "rust-project.json" },
 	settings = {
 		["rust-analyzer"] = {
 			cargo = {
@@ -93,3 +86,4 @@ lspconfig.rust_analyzer.setup({
 		},
 	},
 })
+vim.lsp.enable("rust_analyzer")
