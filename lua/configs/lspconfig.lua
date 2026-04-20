@@ -9,19 +9,42 @@ local servers = {
 	"cssls",
 	"clangd",
 	"tailwindcss",
-	"volar",
+	"vue_ls",
 	"dockerls",
 	"docker_compose_language_service",
 	"prismals",
 	"pyright",
 }
 
+local per_server_settings = {
+	tailwindcss = {
+		settings = {
+			tailwindCSS = {
+				files = {
+					exclude = {
+						"**/.git/**",
+						"**/node_modules/**",
+						"**/.claude/**",
+						"**/.next/**",
+						"**/dist/**",
+						"**/build/**",
+					},
+				},
+			},
+		},
+	},
+}
+
 for _, lsp in ipairs(servers) do
-	vim.lsp.config(lsp, {
+	local cfg = {
 		on_attach = on_attach,
 		on_init = on_init,
 		capabilities = capabilities,
-	})
+	}
+	if per_server_settings[lsp] then
+		cfg = vim.tbl_deep_extend("force", cfg, per_server_settings[lsp])
+	end
+	vim.lsp.config(lsp, cfg)
 	vim.lsp.enable(lsp)
 end
 
